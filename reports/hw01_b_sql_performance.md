@@ -35,17 +35,17 @@ This moves repeated aggregation work out of dashboard runtime and into a prepare
 ## Runtime comparison
 
 ### Baseline direct query
-- runs: [0.4480480000056559, 0.48890949999622535, 0.4813768999883905]
-- best_seconds: 0.4480
-- avg_seconds: 0.4728
+- runs: [0.48920740000903606, 0.45382860000245273, 0.41635060001863167]
+- best_seconds: 0.4164
+- avg_seconds: 0.4531
 
 ### Materialized view read
-- runs: [0.2517299000028288, 0.2022125999937998, 0.18000710000342224, 0.17782319999241736, 0.18008560000453144]
-- best_seconds: 0.1778
-- avg_seconds: 0.1984
+- runs: [0.17211500002304092, 0.18686419998994097, 0.18462059999001212, 0.15606550002121367, 0.1597654000215698]
+- best_seconds: 0.1561
+- avg_seconds: 0.1719
 
 ### Speedup
-- speedup_vs_baseline_best: 2.5196x
+- speedup_vs_baseline_best: 2.6678x
 
 ## Explain-plan summary
 - The baseline query performs repeated aggregation on large source tables.
@@ -54,13 +54,20 @@ This moves repeated aggregation work out of dashboard runtime and into a prepare
 
 ## Metabase dashboard
 Dashboard name:
-- `QBC12 HW01 - <your-github-username> - Airbnb Ops`
+- `QBC12 HW01 - sobhanjabari - Airbnb Ops`
 
 Required screenshot path:
 - `screenshots/metabase_dashboard.png`
 
 Metabase link:
-- Paste your Metabase dashboard URL here
+- http://185.50.38.163:33012
+
+Required cards:
+1. listings by neighbourhood
+2. average price by neighbourhood
+3. review activity by neighbourhood
+4. availability rate by neighbourhood
+5. top neighbourhoods table
 
 ## Notes
 Because `core.listing` does not expose a text `neighbourhood` column in the shared schema I used `neighbourhood_id::text AS neighbourhood` in the output.
